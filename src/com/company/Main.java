@@ -52,16 +52,11 @@ public class Main {
         }
         System.out.println(list + " " + list.size());
 
-        List<Integer> l = Arrays.asList(2, 3, 6, 1, 9);
-        l.forEach(p -> p *= 2);
-        System.out.println("변경 X: " + l);
-        l = l.stream().map(p -> p * 2).collect(Collectors.toList());
-        System.out.println("변경 O: " + l);
-
-//        List<String> s = Arrays.asList("Kim", "Jack", "Lee", "Dacuya");
         list.forEach(p -> p = "A");
         System.out.println("변경 X: " + list);
-        list = list.stream().map(p -> p = "A").collect(Collectors.toList());
+        list = list.stream()
+                .map(p -> p.equals("A") ? "CHANGED" : p)
+                .collect(Collectors.toList());
         System.out.println("변경 O: " + list);
 
     }
