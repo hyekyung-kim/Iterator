@@ -15,7 +15,6 @@ public class Main {
         list.add("B");
         list.add("C");
 
-        ListIterator<String> it;
         System.out.println(list + " " + list.size());
 
 //        remove 에러: ConcurrentModificationException
@@ -27,7 +26,7 @@ public class Main {
 //        System.out.println(list);
 
 //        remove: 성공
-        it = list.listIterator();
+        ListIterator<String> it = list.listIterator();
         while (it.hasNext()) {
             String person = it.next();
 
@@ -53,22 +52,17 @@ public class Main {
         }
         System.out.println(list + " " + list.size());
 
-
         List<Integer> l = Arrays.asList(2, 3, 6, 1, 9);
-        // 변경 X
         l.forEach(p -> p *= 2);
-        System.out.println(l);
-        // 변경 O
+        System.out.println("변경 X: " + l);
         l = l.stream().map(p -> p * 2).collect(Collectors.toList());
-        System.out.println(l);
+        System.out.println("변경 O: " + l);
 
-        List<String> s = Arrays.asList("Kim", "Jack", "Lee", "Dacuya");
-        // 변경 X
-        s.forEach(p -> p = "A");
-        System.out.println(s);
-        // 변경 O
-        s = s.stream().map(p -> p = "A").collect(Collectors.toList());
-        System.out.println(s);
+//        List<String> s = Arrays.asList("Kim", "Jack", "Lee", "Dacuya");
+        list.forEach(p -> p = "A");
+        System.out.println("변경 X: " + list);
+        list = list.stream().map(p -> p = "A").collect(Collectors.toList());
+        System.out.println("변경 O: " + list);
 
     }
 }
