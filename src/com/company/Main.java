@@ -35,6 +35,7 @@ public class Main {
             }
         }
         System.out.println(list + " " + list.size());
+
 //        add 에러: ConcurrentModificationException
 //        for(String name: list){
 //            if(name.equals("Tom")){
