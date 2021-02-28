@@ -53,11 +53,19 @@ public class Main {
         }
         System.out.println(list + " " + list.size());
 
+//       값 변경
         list.forEach(p -> p = "A");
         System.out.println("변경 X: " + list);
-        list = list.stream()
-                .map(p -> p.equals("A") ? "CHANGED" : p)
-                .collect(Collectors.toList());
+
+        List<String> tmpList = new ArrayList<>();
+        for(String s: list){
+            if(s.equals("A")){
+                tmpList.add("CHANGED");
+            }else{
+                tmpList.add(s);
+            }
+        }
+        Collections.copy(list, tmpList);
         System.out.println("변경 O: " + list);
 
     }
